@@ -76,9 +76,8 @@ int main(void)
    int count=0;
    while(1)
    {
-      //printf("%d\r\n", recvdSamples);
       serLcdClear();
-      serLcdPrint("%d", count++);
+      printf("%d", count++);
       chThdSleepMilliseconds(1000);
    }
    //==========================================================================

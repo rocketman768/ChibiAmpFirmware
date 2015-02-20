@@ -19,6 +19,7 @@
 #include "hal.h"
 #include "printf.h"
 #include "serlcd.h"
+#include "switches.h"
 #include "swr.h"
 
 #define VALUE_TO_STRING(x) #x

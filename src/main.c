@@ -74,11 +74,14 @@ int main(void)
    serLcdInit(printf);
 
    //==========================================================================
-   int count=0;
+   setRadioPath(RADIO_PATH_AMPLIFIER);
+   bandSelect(RADIO_BAND_20M_17M);
+   setAmpPower(1);
+   //int count=0;
    while(1)
    {
-      serLcdClear();
-      printf("%d", count++);
+      //serLcdClear();
+      //printf("%d", count++);
       chThdSleepMilliseconds(1000);
    }
    //==========================================================================

@@ -1,6 +1,13 @@
 #ifndef _SWITCHES_H
 #define _SWITCHES_H
 
+enum {
+   RADIO_BAND_80M = 0,
+   RADIO_BAND_40M_30M = 1,
+   RADIO_BAND_20M_17M = 2,
+   RADIO_BAND_15M_10M = 3
+};
+
 /*!
  * \brief Select the band filters through which to pass the output signal.
  * 

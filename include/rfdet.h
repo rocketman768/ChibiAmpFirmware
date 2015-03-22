@@ -26,8 +26,15 @@ typedef struct {
    int debounceOffTime_ms;
 } RFDetOptions;
 
+typedef struct {
+   int rfIsPresent;
+   systime_t rfOnTime;
+   systime_t rfOffTime;
+} RFDetState;
+
 //! \brief All the options for the rf detector module.
 extern RFDetOptions rfdet_options;
+extern RFDetState rfdet_state;
 
 //! \brief Initialization of the rf detector module.
 void rfdet_init(EXTConfig* extConfig);

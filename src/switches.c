@@ -2,8 +2,11 @@
 #include "hal.h"
 #include "switches.h"
 
+SwitchesState switches_state;
+
 void switches_init(void)
 {
+   switches_state.ampPower = 1;
    // In HW 1.0, need to leave on amp power.
    setAmpPower(1);
    // Antenna connected to radio
@@ -18,6 +21,8 @@ void bandSelect(int band)
    if( band < 0 || band > 3 )
       band = 0;
    
+   switches_state.band = band;
+
    switch(band)
    {
       case 0:
@@ -47,6 +52,7 @@ void bandSelect(int band)
 
 void setRadioPath(int path)
 {
+   switches_state.radioPath = path;
    switch(path)
    {
       case RADIO_PATH_AMPLIFIER:
@@ -61,6 +67,7 @@ void setRadioPath(int path)
 
 void setAmpPower(int pwr)
 {
+   //switches_state.ampPower = pwr;
    if(pwr)
       palSetPad(GPIOB, GPIOB_AMP_PWR);
    /*

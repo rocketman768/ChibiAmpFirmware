@@ -23,11 +23,11 @@ RFDetOptions rfdet_options = {
    .debounceOffTime_ms = 50,
 };
 
-struct RFDetState {
-   int rfIsPresent;
-   systime_t rfOnTime;
-   systime_t rfOffTime;
-} rfdet_state;
+RFDetState rfdet_state = {
+   .rfIsPresent = 0,
+   .rfOnTime = 0,
+   .rfOffTime = 0,
+};
 
 static void rfdet_updateAmpSwitches(void* p)
 {

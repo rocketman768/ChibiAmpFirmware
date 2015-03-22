@@ -17,6 +17,8 @@
 #include <inttypes.h>
 #include "ch.h"
 #include "hal.h"
+
+#include "gui.h"
 #include "printf.h"
 #include "rfdet.h"
 #include "serlcd.h"
@@ -27,11 +29,13 @@
 #define VALUE(x) VALUE_TO_STRING(x)
 #define VAR_NAME_VALUE(var) #var "=" VALUE(var)
 // Make sure I'm not crazy
+/*
 #pragma message(VAR_NAME_VALUE(STM32_SYSCLK))
 #pragma message(VAR_NAME_VALUE(STM32_HCLK))
 #pragma message(VAR_NAME_VALUE(STM32_PCLK1))
 #pragma message(VAR_NAME_VALUE(STM32_PCLK2))
 #pragma message(VAR_NAME_VALUE(STM32_ADCCLK))
+*/
 
 // SD1 driver config
 // The SerLCD defaults to 9600 baud, 1 stop bit, no parity.
@@ -52,11 +56,13 @@ void serial_init(void)
    sdStart(&SD1, &sd1cfg);
    // SD1 is up, so enable printf stuff.
    init_printf((BaseSequentialStream*)&SD1);
+   // Setup serial lcd module
+   serLcdInit(printf);
 }
 
 int main(void)
 {
-   EXTConfig extConfig;
+   //EXTConfig extConfig;
 
    /*
     * System initializations.
@@ -69,22 +75,27 @@ int main(void)
    chSysInit();
 
    /*
+    * ChibiAmpFirmware module options
+    */
+   rfdet_options.enabled = 1;
+
+   /*
     * ChibiAmpFirmware module initializations
     */
-   switches_init();
    serial_init();
+   switches_init();
    //swr_init()
-   rfdet_init(&extConfig);
-   
-   // Setup serial lcd module
-   serLcdInit(printf);
+   //rfdet_init(&extConfig);
+   init_gui();
 
    // Start EXT driver
-   extStart(&EXTD1, &extConfig);
+   //extStart(&EXTD1, &extConfig);
 
    //==========================================================================
    while(1)
    {
+      //serLcdClear();
+      //printf("Hello");
       chThdSleepMilliseconds(1000);
    }
    //==========================================================================

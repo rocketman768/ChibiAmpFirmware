@@ -95,6 +95,7 @@ CSRC = $(PORTSRC) \
        $(PLATFORMSRC) \
        $(BOARDSRC) \
        $(CHIBIOS)/os/various/chprintf.c \
+       src/gui.c \
        src/main.c \
        src/printf.c \
        src/rfdet.c \

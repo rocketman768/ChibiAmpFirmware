@@ -8,6 +8,14 @@ enum {
    RADIO_BAND_15M_10M = 3
 };
 
+typedef struct{
+   int ampPower;
+   int radioPath;
+   int band;
+} SwitchesState;
+
+extern SwitchesState switches_state;
+
 /*!
  * \brief Initialize all switches to startup configuration.
  */

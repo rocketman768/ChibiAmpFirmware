@@ -15,24 +15,32 @@
  */
 
 #include "serlcd.h"
+#include "ch.h"
+#include "hal.h"
 
 void (*serLcdPrint)(char*,...) = 0;
+static int lcdDelay_ms = 2;
 
 void serLcdInit(void (*printFunc)(char*,...))
 {
    serLcdPrint = printFunc;
-   serLcdBrightness(8);
-   serLcdClear();
+   // CTRL-R @ 9600 baud during splash screen resets the module to 9600 baud
+   printFunc("%c", 'R' - 64);
+   chThdSleepMilliseconds(lcdDelay_ms);
+   //serLcdBrightness(25);
+   //serLcdClear();
 }
 
 void serLcdBrightness(uint8_t brightness)
 {
    serLcdPrint("%c%c", 0x7C, 0x80 | brightness);
+   chThdSleepMilliseconds(lcdDelay_ms);
 }
 
 void serLcdClear(void)
 {
    serLcdPrint("%c%c", 0xFE, 0x01);
+   chThdSleepMilliseconds(lcdDelay_ms);
 }
 
 void serLcdPos(uint8_t line, uint8_t pos)
@@ -58,4 +66,5 @@ void serLcdPos(uint8_t line, uint8_t pos)
    posVal += pos;
    
    serLcdPrint("%c%c", 0xFE, 0x80 | posVal);
+   chThdSleepMilliseconds(lcdDelay_ms);
 }

@@ -2,6 +2,16 @@
 #include "hal.h"
 #include "switches.h"
 
+void switches_init(void)
+{
+   // In HW 1.0, need to leave on amp power.
+   setAmpPower(1);
+   // Antenna connected to radio
+   setRadioPath(RADIO_PATH_ANTENNA);
+   // 20M
+   bandSelect(RADIO_BAND_20M_17M);
+}
+
 void bandSelect(int band)
 {
    // Switch into band 0 (no current drain) if given bad params.
@@ -53,6 +63,11 @@ void setAmpPower(int pwr)
 {
    if(pwr)
       palSetPad(GPIOB, GPIOB_AMP_PWR);
+   /*
+    * In ChibiAmp 1.0, there is a bug where we cannot turn the amp power off.
+    * Reenable this on the next hardware revision
+    *
    else
       palClearPad(GPIOB, GPIOB_AMP_PWR);
+    */
 }

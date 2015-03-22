@@ -87,7 +87,7 @@
 
 #define GPIOC_ADC0                  0
 #define GPIOC_PIN1                  1
-#define GPIOC_PIN2                  2
+#define GPIOC_RFDET                  2
 #define GPIOC_ANT_SW                3
 #define GPIOC_PIN4                  4
 #define GPIOC_PIN5                  5
@@ -386,7 +386,7 @@
  *
  * PC0  - ADC0                      (analog).
  * PC1  - PIN1                      (input pullup).
- * PC2  - PIN2                      (input pullup).
+ * PC2  - RFDET                     (input pullup).
  * PC3  - ANT_SW                    (output push-pull pulldown).
  * PC4  - PIN4                      (input pullup).
  * PC5  - PIN5                      (input pullup).
@@ -403,7 +403,7 @@
  */
 #define VAL_GPIOC_MODER             (PIN_MODE_ANALOG(GPIOC_ADC0) |          \
                                      PIN_MODE_INPUT(GPIOC_PIN1) |           \
-                                     PIN_MODE_INPUT(GPIOC_PIN2) |           \
+                                     PIN_MODE_INPUT(GPIOC_RFDET) |           \
                                      PIN_MODE_OUTPUT(GPIOC_ANT_SW) |        \
                                      PIN_MODE_INPUT(GPIOC_PIN4) |           \
                                      PIN_MODE_INPUT(GPIOC_PIN5) |           \
@@ -419,7 +419,7 @@
                                      PIN_MODE_INPUT(GPIOC_PIN15))
 #define VAL_GPIOC_OTYPER            (PIN_OTYPE_PUSHPULL(GPIOC_ADC0) |       \
                                      PIN_OTYPE_PUSHPULL(GPIOC_PIN1) |       \
-                                     PIN_OTYPE_PUSHPULL(GPIOC_PIN2) |       \
+                                     PIN_OTYPE_PUSHPULL(GPIOC_RFDET) |       \
                                      PIN_OTYPE_PUSHPULL(GPIOC_ANT_SW) |     \
                                      PIN_OTYPE_PUSHPULL(GPIOC_PIN4) |       \
                                      PIN_OTYPE_PUSHPULL(GPIOC_PIN5) |       \
@@ -435,7 +435,7 @@
                                      PIN_OTYPE_PUSHPULL(GPIOC_PIN15))
 #define VAL_GPIOC_OSPEEDR           (PIN_OSPEED_100M(GPIOC_ADC0) |          \
                                      PIN_OSPEED_100M(GPIOC_PIN1) |          \
-                                     PIN_OSPEED_100M(GPIOC_PIN2) |          \
+                                     PIN_OSPEED_100M(GPIOC_RFDET) |          \
                                      PIN_OSPEED_100M(GPIOC_ANT_SW) |        \
                                      PIN_OSPEED_100M(GPIOC_PIN4) |          \
                                      PIN_OSPEED_100M(GPIOC_PIN5) |          \
@@ -451,7 +451,7 @@
                                      PIN_OSPEED_100M(GPIOC_PIN15))
 #define VAL_GPIOC_PUPDR             (PIN_PUPDR_FLOATING(GPIOC_ADC0) |       \
                                      PIN_PUPDR_PULLUP(GPIOC_PIN1) |         \
-                                     PIN_PUPDR_PULLUP(GPIOC_PIN2) |         \
+                                     PIN_PUPDR_PULLUP(GPIOC_RFDET) |         \
                                      PIN_PUPDR_PULLDOWN(GPIOC_ANT_SW) |     \
                                      PIN_PUPDR_PULLUP(GPIOC_PIN4) |         \
                                      PIN_PUPDR_PULLUP(GPIOC_PIN5) |         \
@@ -467,7 +467,7 @@
                                      PIN_PUPDR_PULLUP(GPIOC_PIN15))
 #define VAL_GPIOC_ODR               (PIN_ODR_HIGH(GPIOC_ADC0) |             \
                                      PIN_ODR_HIGH(GPIOC_PIN1) |             \
-                                     PIN_ODR_HIGH(GPIOC_PIN2) |             \
+                                     PIN_ODR_HIGH(GPIOC_RFDET) |             \
                                      PIN_ODR_HIGH(GPIOC_ANT_SW) |             \
                                      PIN_ODR_HIGH(GPIOC_PIN4) |             \
                                      PIN_ODR_HIGH(GPIOC_PIN5) |             \
@@ -483,7 +483,7 @@
                                      PIN_ODR_HIGH(GPIOC_PIN15))
 #define VAL_GPIOC_AFRL              (PIN_AFIO_AF(GPIOC_ADC0, 0) |           \
                                      PIN_AFIO_AF(GPIOC_PIN1, 0) |           \
-                                     PIN_AFIO_AF(GPIOC_PIN2, 0) |           \
+                                     PIN_AFIO_AF(GPIOC_RFDET, 0) |           \
                                      PIN_AFIO_AF(GPIOC_ANT_SW, 0) |           \
                                      PIN_AFIO_AF(GPIOC_PIN4, 0) |           \
                                      PIN_AFIO_AF(GPIOC_PIN5, 0) |           \

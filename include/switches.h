@@ -9,6 +9,11 @@ enum {
 };
 
 /*!
+ * \brief Initialize all switches to startup configuration.
+ */
+void switches_init(void);
+
+/*!
  * \brief Select the band filters through which to pass the output signal.
  * 
  * \param band in [0,3]. Band 0 requires no current and should be default

@@ -18,6 +18,7 @@
 #include "ch.h"
 #include "hal.h"
 #include "printf.h"
+#include "rfdet.h"
 #include "serlcd.h"
 #include "switches.h"
 #include "swr.h"
@@ -55,6 +56,7 @@ void serial_init(void)
 
 int main(void)
 {
+   EXTConfig extConfig;
 
    /*
     * System initializations.
@@ -66,22 +68,23 @@ int main(void)
    halInit();
    chSysInit();
 
-   // Various initializations
+   /*
+    * ChibiAmpFirmware module initializations
+    */
+   switches_init();
    serial_init();
    //swr_init()
+   rfdet_init(&extConfig);
    
    // Setup serial lcd module
    serLcdInit(printf);
 
+   // Start EXT driver
+   extStart(&EXTD1, &extConfig);
+
    //==========================================================================
-   setRadioPath(RADIO_PATH_AMPLIFIER);
-   bandSelect(RADIO_BAND_20M_17M);
-   setAmpPower(1);
-   //int count=0;
    while(1)
    {
-      //serLcdClear();
-      //printf("%d", count++);
       chThdSleepMilliseconds(1000);
    }
    //==========================================================================

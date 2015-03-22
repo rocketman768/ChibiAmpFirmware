@@ -65,7 +65,7 @@ endif
 #
 
 # Define project name here
-PROJECT = ch-stmf401-test
+PROJECT = ChibiAmpFirmware
 
 # Imported source files and paths
 ifeq ($(CHIBIOS),)
@@ -97,6 +97,7 @@ CSRC = $(PORTSRC) \
        $(CHIBIOS)/os/various/chprintf.c \
        src/main.c \
        src/printf.c \
+       src/rfdet.c \
        src/serlcd.c \
        src/switches.c \
        src/swr.c
